@@ -1,4 +1,6 @@
-to get data run in terminal - northwind
+react apps 
+
+ get data run in terminal - northwind
 
 this project is react tutorial i made 
 it request data from global npm package named northwind-rest-api
