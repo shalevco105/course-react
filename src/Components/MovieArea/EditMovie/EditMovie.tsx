@@ -16,9 +16,10 @@ export function EditMovie(): JSX.Element {
     useEffect(() => {
         movieService.getOneMovie(externalId)
             .then(movie => {
-                setValue("movie_name", movie.movie_name);
-                setValue("movie_length", movie.movie_length);
-                setValue("movie_picUrl", movie.movie_picUrl);
+                setValue("name", movie.name);
+                setValue("length", movie.length);
+                setValue("price", movie.price);
+                setValue("movie_picUrl", movie.picUrl);
             })
             .catch(err => notify.error(err));
     }, []);
@@ -39,23 +40,24 @@ export function EditMovie(): JSX.Element {
     return (
         <div className="EditMovie">
             <form onSubmit={handleSubmit(send)}>
-
                 <label>Name: </label>
-                <input type="text" {...register("movie_name", MovieModel.nameValidation)} />
-                <span className="error">{formState.errors?.movie_name?.message}</span>
+                <input type="text" {...register("name", MovieModel.nameValidation)} />
+                <span className="error">{formState.errors?.name?.message}</span>
+
+                <label>Length: </label>
+                <input type="number" {...register("length")} />
+                <span className="error">{formState.errors?.length?.message}</span>
 
                 <label>Price: </label>
-                <input type="number" {...register("movie_length")} />
-                <span className="error">{formState.errors?.movie_length?.message}</span>
+                <input type="number" {...register("price")} />
+                <span className="error">{formState.errors?.price?.message}</span>
 
                 <label>Image: </label>
                 <input type="file" {...register("movie_picUrl")} />
-                <span className="error">{formState.errors?.movie_picUrl?.message}</span>
+                <span className="error">{formState.errors?.picUrl?.message}</span>
 
                 <button>Update</button>
-
             </form>
-
         </div>
     );
 }

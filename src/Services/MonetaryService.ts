@@ -1,7 +1,7 @@
 class MonetaryService {
-	
-    public getVat(price: number, percent: number) { 
-        return price * percent / 100;
+
+    public getVat(length: number, percent: number) {
+        return length * percent / 100;
     }
 
 }

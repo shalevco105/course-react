@@ -2,9 +2,10 @@ import { RegisterOptions } from "react-hook-form";
 
 export class MovieModel {
     public externalId: number;
-    public movie_name: string;
-    public movie_length: string;
-    public movie_picUrl: string;
+    public name: string;
+    public length: string;
+    public picUrl: string;
+    public price: number;
 
     public static nameValidation: RegisterOptions = {
         required: { value: true, message: "Missing name." },
@@ -12,9 +13,16 @@ export class MovieModel {
         maxLength: { value: 100, message: "Name too long." }
     };
 
+    public static priceValidation: RegisterOptions = {
+        required: { value: true, message: "Missing price." },
+        min: { value: 0, message: "Price can't be negative."},
+        max: { value: 1000, message: "Price can't exceed 1000."}
+    };
+
     public static imageValidation: RegisterOptions = {
         required: { value: true, message: "Missing image." }
     };
+    movie_picUrl: string;
 
 }
 

@@ -7,21 +7,14 @@ import "./About.css";
 
 function About(): JSX.Element {
 
-    useTitle("Northwind About");
+    useTitle("Shalev's App About");
 
-    const value = "Num: " +  Math.random();
-    
     return (
         <div className="About">
-
             <LinkedIn />
-
             <Song />
-
             <Clock />
-
             <Facebook />
-
         </div>
     );
 }

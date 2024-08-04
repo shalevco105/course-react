@@ -7,13 +7,13 @@ import { monetaryService } from "../../../Services/MonetaryService";
 export function Vat(): JSX.Element {
 
     const percent = 17;
-    const [price, setPrice] = useState<number>(0);
+    const [length, setLength] = useState<number>(0);
     const [vat, setVat] = useState<number>(0);
 
     function handleChange(args: ChangeEvent<HTMLInputElement>) {
-        const price = +args.target.value;
-        setPrice(price);
-        const vat = monetaryService.getVat(price, percent);
+        const length = +args.target.value;
+        setLength(length);
+        const vat = monetaryService.getVat(length, percent);
         setVat(vat);
     }
 
@@ -22,10 +22,10 @@ export function Vat(): JSX.Element {
 
             <h4>VAT Calculator</h4>
 
-            <label>Price: </label>
-            <input type="number" onChange={handleChange} value={price} placeholder="price" />
+            <label>Length: </label>
+            <input type="number" onChange={handleChange} value={length} placeholder="length" />
 
-            <p data-testid="resultParagraph">{price} x {percent}% = {vat}</p>
+            <p data-testid="resultParagraph">{length} x {percent}% = {vat}</p>
 			
         </div>
     );

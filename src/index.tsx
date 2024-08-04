@@ -6,12 +6,12 @@ import { Layout } from './Components/LayoutArea/Layout/Layout';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './Redux/store';
-import { interceptor } from './Utils/interceptor';
+import { requestInterceptor } from './Utils/requestInterceptor';
 import { MiniThemeContext, siteMiniTheme } from './Utils/MiniTheme';
 import { ThemeProvider } from '@mui/material';
 import { muiTheme } from './Utils/MuiTheme';
 
-interceptor.createInterceptor();
+requestInterceptor.createRequestInterceptor();
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

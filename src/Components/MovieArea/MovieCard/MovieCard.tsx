@@ -7,7 +7,6 @@ type MovieCardProps = {
 };
 
 export function MovieCard(props: MovieCardProps): JSX.Element {
-
     const navigate = useNavigate();
 
     function displayDetails() {
@@ -17,11 +16,12 @@ export function MovieCard(props: MovieCardProps): JSX.Element {
     return (
         <div className="MovieCard" onClick={displayDetails}>
             <div>
-                {props.movie.movie_name} <br />
-                Price: {props.movie.movie_length} 
+                {props.movie.externalId}| {props.movie.name} <br />
+                Length: {props.movie.length} <br />
+                Price: {props.movie.price}$
             </div>
             <div>
-                <img src={props.movie.movie_picUrl} />
+                <img src={props.movie.picUrl} alt={props.movie.externalId.toString()}/>
             </div>
         </div>
     );

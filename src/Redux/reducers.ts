@@ -34,6 +34,7 @@ export function registerUser(previousState: UserModel, action: PayloadAction<Use
 
 export function loginUser(previousState: UserModel, action: PayloadAction<UserModel>) {
     const newState: UserModel = action.payload;
+    return newState;
 }
 
 export function logoutUser(previousState: UserModel, action: Action) {

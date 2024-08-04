@@ -5,7 +5,7 @@ export function Header(): JSX.Element {
     return (
         <div className="Header">
             <UserMenu />
-			<h1>Shalev's React App</h1>
+			<h1>Shalev's Movies App</h1>
         </div>
     );
 }

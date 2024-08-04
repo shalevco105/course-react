@@ -23,20 +23,20 @@ describe("Vat Component", () => {
 
     it("Should contain specific elements", () => {
         expect(screen.getByText("VAT Calculator")).toBeDefined();
-        expect(screen.getByPlaceholderText("price")).toBeDefined();
+        expect(screen.getByPlaceholderText("length")).toBeDefined();
     });
 
     it("Should calculate vat correctly", () => {
-        const price = Math.floor(Math.random() * 1000);
+        const length = Math.floor(Math.random() * 1000);
         const percent = 17;
-        const vat = monetaryService.getVat(price, percent);
-        const input = screen.getByPlaceholderText("price");
+        const vat = monetaryService.getVat(length, percent);
+        const input = screen.getByPlaceholderText("length");
 
-        userEvent.type(input, price.toString());
+        userEvent.type(input, length.toString());
 
-        const p = screen.getByTestId("resultParagraph"); 
+        const p = screen.getByTestId("resultParagraph");
 
-        expect(p).toHaveTextContent(`${price} x ${percent}% = ${vat}`);
+        expect(p).toHaveTextContent(`${length} x ${percent}% = ${vat}`);
     });
 
 });

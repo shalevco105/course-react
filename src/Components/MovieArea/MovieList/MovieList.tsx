@@ -8,7 +8,7 @@ import { useTitle } from "../../../Utils/UseTitle";
 
 export function MovieList(): JSX.Element {
 
-    useTitle("Northwind Movies");
+    useTitle("Shalev's Movies");
 
     const [movies, setMovies] = useState<MovieModel[]>([]);
 
@@ -21,7 +21,8 @@ export function MovieList(): JSX.Element {
 
     return (
         <div className="MovieList">
-            {movies.map(p => <MovieCard key={p.externalId} movie={p} />)}
+            <h1>Click to Edit or Delete</h1>
+            {movies.map(movie => <MovieCard key={movie.externalId} movie={movie} />)}
         </div>
     );
 }

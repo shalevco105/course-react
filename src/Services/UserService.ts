@@ -22,26 +22,19 @@ class UserService {
     public async register(user: UserModel) {
         const response = await axios.post<string>(appConfig.registerUrl, user);
         const data = response.data;
-        const decryptedData = decrypt(data) as { username: string, token: string };
-        console.log("sss: " + decryptedData)
-        const dbUser = decryptedData.username;
-        console.log(data)
-        console.log(decryptedData)
-        // const action = userActions.registerUser(dbUser);
-        // store.dispatch(action);
-        // localStorage.setItem("token", token);
+        const decryptedData: { user: UserModel, token: string } = JSON.parse(decrypt(data));
+        const action = userActions.registerUser(decryptedData.user);
+        store.dispatch(action);
+        localStorage.setItem("token", decryptedData.token);
     }
 
     public async login(credentials: CredentialsModel) {
-        const response = await axios.post<{ token: string, username: string }>(appConfig.loginUrl, credentials);
+        const response = await axios.post<string>(appConfig.loginUrl, credentials);
         const data = response.data;
-        const token = data.token;
-        const username = data.username;
-        const container = jwtDecode<{ user: UserModel }>(token);
-        const dbUser = container.user;
-        const action = userActions.loginUser(dbUser);
+        const decryptedData: { user: UserModel, token: string } = JSON.parse(decrypt(data))
+        const action = userActions.loginUser(decryptedData.user);
         store.dispatch(action);
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", decryptedData.token);
     }
 
     public logout() {

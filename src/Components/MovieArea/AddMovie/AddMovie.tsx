@@ -8,7 +8,7 @@ import { useTitle } from "../../../Utils/UseTitle";
 
 export function AddMovie(): JSX.Element {
 
-    useTitle("Northwind Add Movie");
+    useTitle("Shalev's App Add Movie");
 
     const { register, handleSubmit, formState, setValue } = useForm<MovieModel>();
     const navigate = useNavigate();
@@ -27,23 +27,24 @@ export function AddMovie(): JSX.Element {
 
     return (
         <div className="AddMovie">
-
             <form onSubmit={handleSubmit(send)}>
-
                 <label>Name: </label>
-                <input type="text" {...register("movie_name", MovieModel.nameValidation)} />
-                <span className="error">{formState.errors?.movie_name?.message}</span>
+                <input type="text" {...register("name", MovieModel.nameValidation)} />
+                <span className="error">{formState.errors?.name?.message}</span>
+
+                <label>Length: </label>
+                <input type="number" {...register("length")} />
+                <span className="error">{formState.errors?.length?.message}</span>
 
                 <label>Price: </label>
-                <input type="number" {...register("movie_length")} />
-                <span className="error">{formState.errors?.movie_length?.message}</span>
+                <input type="number" {...register("price")} />
+                <span className="error">{formState.errors?.price?.message}</span>
 
                 <label>Image: </label>
-                <input type="file" {...register("movie_picUrl", MovieModel.imageValidation)} />
-                <span className="error">{formState.errors?.movie_picUrl?.message}</span>
+                <input type="file" {...register("picUrl", MovieModel.imageValidation)} />
+                <span className="error">{formState.errors?.picUrl?.message}</span>
 
                 <button>Add</button>
-
             </form>
         </div>
     );

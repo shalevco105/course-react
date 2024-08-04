@@ -7,7 +7,7 @@ import { chatGptService } from "../../../Services/ChatGptService";
 
 export function Home(): JSX.Element {
 
-    useTitle("Northwind Home");
+    useTitle("Shalev's App Home");
 
     useEffect(()=>{
 

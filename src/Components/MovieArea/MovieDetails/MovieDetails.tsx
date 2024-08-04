@@ -34,9 +34,10 @@ export function MovieDetails(): JSX.Element {
     return (
         <div className="MovieDetails">
 
-            <h3>Name: {movie?.movie_name}</h3>
-            <h3>Price: {movie?.movie_length}</h3>
-            <img src={movie?.movie_picUrl} />
+            <h3>Name: {movie?.name}</h3>
+            <h3>Length: {movie?.length}</h3>
+            <h3>Length: {movie?.price}</h3>
+            <img src={movie?.picUrl} alt={movie.externalId.toString()}/>
 
             <br /> <br />
 
