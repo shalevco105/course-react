@@ -1,12 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./Routing.css";
 import { Home } from "../../HomeArea/Home/Home";
-import { ProductList } from "../../ProductArea/ProductList/ProductList";
+import { MovieList } from "../../MovieArea/MovieList/MovieList";
 import { PageNotFound } from "../PageNotFound/PageNotFound";
 import { Suspense, lazy } from "react";
-import { ProductDetails } from "../../ProductArea/ProductDetails/ProductDetails";
-import { AddProduct } from "../../ProductArea/AddProduct/AddProduct";
-import { EditProduct } from "../../ProductArea/EditProduct/EditProduct";
+import { MovieDetails } from "../../MovieArea/MovieDetails/MovieDetails";
+import { AddMovie } from "../../MovieArea/AddMovie/AddMovie";
+import { EditMovie } from "../../MovieArea/EditMovie/EditMovie";
 import { Register } from "../../UserArea/Register/Register";
 import { Login } from "../../UserArea/Login/Login";
 import { ContactUs } from "../../AboutArea/ContactUs/ContactUs";
@@ -25,10 +25,10 @@ export function Routing(): JSX.Element {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
 
-                <Route path="/products" element={<ProductList />} />
-                <Route path="/products/details/:prodId" element={<ProductDetails />} />
-                <Route path="/products/new" element={<AddProduct />} />
-                <Route path="/products/edit/:prodId" element={<EditProduct />} />
+                <Route path="/movies" element={<MovieList />} />
+                <Route path="/movies/details/:prodId" element={<MovieDetails />} />
+                <Route path="/movies/new" element={<AddMovie />} />
+                <Route path="/movies/edit/:prodId" element={<EditMovie />} />
 
                 <Route path="/about" element={suspenseAbout} />
                 <Route path="/contact-us" element={<ContactUs />} />

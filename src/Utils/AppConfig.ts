@@ -1,11 +1,11 @@
 class AppConfig {
 
-	public readonly productsUrl = "http://localhost:3030/api/products/";
-	public readonly registerUrl = "http://localhost:3030/api/register/";
-	public readonly loginUrl = "http://localhost:3030/api/login/";
+	public readonly moviesUrl = "http://localhost:3030/movie/data/";
+	public readonly registerUrl = "http://localhost:3030/auth/register/";
+	public readonly loginUrl = "http://localhost:3030/auth/login/";
 
-    public readonly chatGptUrl = "https://api.openai.com/v1/chat/completions";
-    public readonly chatGptKey = "your-api-key-here";
+	public readonly chatGptUrl = "https://api.openai.com/v1/chat/completions";
+	public readonly chatGptKey = "your-api-key-here";
 
 }
 

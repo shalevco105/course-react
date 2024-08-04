@@ -21,7 +21,7 @@ export function TestAuth(): JSX.Element {
 
     async function testAdmin() {
         try {
-            const response = await axios.get("http://localhost:3030/api/products/out-of-stock");
+            const response = await axios.get("http://localhost:3030/api/movies/out-of-stock");
             console.log(response.data);
         }
         catch (err: any) {
@@ -32,9 +32,9 @@ export function TestAuth(): JSX.Element {
     return (
         <div className="TestAuth">
 
-            { user && <button onClick={testUser}>Test User</button>}
+            {user && <button onClick={testUser}>Test User</button>}
 
-            { user?.role === "Admin" && <button onClick={testAdmin}>Test Admin</button> }
+            {user?.role === "Admin" && <button onClick={testAdmin}>Test Admin</button>}
 
         </div>
     );

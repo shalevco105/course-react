@@ -1,8 +1,8 @@
 export class UserModel {
-	public id: number;
-    public firstName: string;
-    public lastName: string;
+    public username: string;
+    public fullname: string;
+    public age: number;
+    public role: string;
     public email: string;
     public password: string;
-    public role: string;
 }

@@ -30,7 +30,7 @@ export function UserMenu(): JSX.Element {
             {
                 user &&
                 <>
-                    <span>Hello {user.firstName} {user.lastName} | </span>
+                    <span>Hello {user.fullname} | </span>
                     <NavLink to="/home" onClick={logout}>Logout</NavLink>
                 </>
             }

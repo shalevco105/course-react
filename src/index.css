@@ -1,9 +1,15 @@
-html, body, #root {
+html,
+body,
+#root {
     height: 100%;
     margin: 0;
     padding: 0;
     text-align: center;
     background-image: linear-gradient(lightblue, white);
+}
+
+* {
+    font-family: 'Lobster', cursive !important;
 }
 
 a {
@@ -20,7 +26,8 @@ form {
     border: 1px solid;
 }
 
-form > input, form > button {
+form>input,
+form>button {
     width: 100%;
     margin-bottom: 20px;
     box-sizing: border-box;

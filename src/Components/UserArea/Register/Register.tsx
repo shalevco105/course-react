@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { TextField, Button, Container, Typography, Box } from "@mui/material";
 import "./Register.css";
 import { UserModel } from "../../../Models/UserModel";
 import { notify } from "../../../Utils/notify";
@@ -6,41 +7,71 @@ import { userService } from "../../../Services/UserService";
 import { useNavigate } from "react-router-dom";
 
 export function Register(): JSX.Element {
-
     const { register, handleSubmit } = useForm<UserModel>();
     const navigate = useNavigate();
 
     async function send(user: UserModel) {
         try {
             await userService.register(user);
-            notify.success("Welcome " + user.firstName);
+            notify.success("Welcome " + user.username);
             navigate("/home");
-        }
-        catch(err: any) {
+        } catch (err: any) {
             notify.error(err);
         }
     }
-    
+
     return (
-        <div className="Register">
-            
-			<form onSubmit={handleSubmit(send)}>
+        <Container maxWidth="sm">
+            <Box
+                component="form"
+                onSubmit={handleSubmit(send)}
+                sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 4 }}
+            >
+                <Typography variant="h4" component="h1" gutterBottom>
+                    Register
+                </Typography>
 
-                <label>First name: </label>
-                <input type="text" {...register("firstName")} />
-
-                <label>Last name: </label>
-                <input type="text" {...register("lastName")} />
-
-                <label>Email: </label>
-                <input type="email" {...register("email")} />
-
-                <label>Password: </label>
-                <input type="password" {...register("password")} />
-
-                <button>Register</button>
-
-            </form>
-        </div>
+                <TextField
+                    label="Username"
+                    {...register("username")}
+                    fullWidth
+                    required
+                />
+                <TextField
+                    label="Fullname"
+                    {...register("fullname")}
+                    fullWidth
+                    required
+                />
+                <TextField
+                    label="Age"
+                    {...register("age")}
+                    fullWidth
+                    required
+                />
+                <TextField
+                    label="Email"
+                    type="email"
+                    {...register("email")}
+                    fullWidth
+                    required
+                />
+                <TextField
+                    label="Password"
+                    type="password"
+                    {...register("password")}
+                    fullWidth
+                    required
+                />
+                <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                >
+                    Register
+                </Button>
+            </Box>
+        </Container>
     );
 }

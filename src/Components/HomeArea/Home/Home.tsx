@@ -11,9 +11,9 @@ export function Home(): JSX.Element {
 
     useEffect(()=>{
 
-        chatGptService.chat("Tell me a programming joke")
-            .then(completion => console.log(completion))
-            .catch(err => console.log(err));
+        // chatGptService.chat("Tell me a programming joke")
+        //     .then(completion => console.log(completion))
+        //     .catch(err => console.log(err));
 
     }, []);
 
