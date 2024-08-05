@@ -24,7 +24,7 @@ export function Login(): JSX.Element {
     return (
         <Box className="Login" component="form" onSubmit={handleSubmit(onSubmit)}
             noValidate sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 4 }}>
-            <Typography variant="h4" component="h1" gutterBottom>
+            <Typography gutterBottom sx={{ fontSize: '2rem' }}>
                 Login
             </Typography>
             <TextField

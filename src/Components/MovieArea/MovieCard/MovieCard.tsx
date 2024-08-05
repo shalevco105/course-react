@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MovieModel } from "../../../Models/MovieModel";
 import "./MovieCard.css";
 
@@ -21,7 +21,7 @@ export function MovieCard(props: MovieCardProps): JSX.Element {
                 Price: {props.movie.price}$
             </div>
             <div>
-                <img src={props.movie.picUrl} alt={props.movie.externalId.toString()}/>
+                <img src={props.movie.imageUrl} alt={props.movie.externalId.toString()} />
             </div>
         </div>
     );

@@ -1,3 +1,39 @@
-.MovieDetails img {
-	width: 200px;
+.movie-details-container {
+	padding: 20px;
+}
+
+.movie-card {
+	background-color: #0a056a91 !important;
+	max-width: 600px;
+	margin: auto;
+}
+
+.movie-title {
+	text-align: center;
+}
+
+.movie-length,
+.movie-price {
+	text-align: center;
+}
+
+.movie-media {
+	display: flex;
+	justify-content: center;
+	margin-top: 16px;
+}
+
+.movie-media img {
+	width: 300px;
+	height: auto;
+}
+
+.action-buttons {
+	padding: 16px;
+	display: flex;
+	justify-content: center;
+}
+
+.action-buttons .button-item {
+	margin: 0 8px;
 }

@@ -1,12 +1,29 @@
 .Menu {
-	display: flex;
+    display: flex;
     flex-direction: column;
     gap: 20px;
     padding-top: 10px;
 }
 
-.Menu > .active {
-    color: green;
+.Menu .active {
+    color: yellow !important;
     font-weight: bold;
     font-family: Arial;
+}
+
+.MuiListItemText-root {
+    justify-content: center;
+    display: flex;
+}
+
+.MuiListItem-root {
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.MuiListItem-root:hover {
+    background-color: #2d83c56d;
 }

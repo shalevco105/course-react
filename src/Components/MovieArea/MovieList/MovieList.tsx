@@ -5,6 +5,7 @@ import "./MovieList.css";
 import { MovieCard } from "../MovieCard/MovieCard";
 import { notify } from "../../../Utils/notify";
 import { useTitle } from "../../../Utils/UseTitle";
+import { Typography } from "@mui/material";
 
 export function MovieList(): JSX.Element {
 
@@ -13,7 +14,6 @@ export function MovieList(): JSX.Element {
     const [movies, setMovies] = useState<MovieModel[]>([]);
 
     useEffect(() => {
-
         movieService.getAllMovies()
             .then(dbMovies => setMovies(dbMovies))
             .catch(err => notify.error(err));
@@ -21,7 +21,9 @@ export function MovieList(): JSX.Element {
 
     return (
         <div className="MovieList">
-            <h1>Click to Edit or Delete</h1>
+            <Typography gutterBottom sx={{ fontSize: '2rem' }}>
+                Click to Edit or Delete
+            </Typography>
             {movies.map(movie => <MovieCard key={movie.externalId} movie={movie} />)}
         </div>
     );

@@ -27,7 +27,7 @@ export function Register(): JSX.Element {
                 onSubmit={handleSubmit(send)}
                 sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 4 }}
             >
-                <Typography variant="h4" component="h1" gutterBottom>
+                <Typography gutterBottom sx={{ fontSize: '2rem' }}>
                     Register
                 </Typography>
 

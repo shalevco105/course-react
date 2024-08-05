@@ -1,11 +1,10 @@
-import { UserMenu } from "../../UserArea/UserMenu/UserMenu";
+import { UserNav } from "../../UserArea/UserNav/UserNav";
 import "./Header.css";
 
 export function Header(): JSX.Element {
     return (
         <div className="Header">
-            <UserMenu />
-			<h1>Shalev's Movies App</h1>
+            <UserNav />
         </div>
     );
 }

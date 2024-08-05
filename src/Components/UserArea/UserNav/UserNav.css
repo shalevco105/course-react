@@ -1,0 +1,29 @@
+  .navbar {
+      background-color: #00013ede !important;
+      height: 100%;
+      display: flex;
+      align-items: center;
+  }
+
+  .toolbar {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+  }
+
+  .title {
+      padding-left: 1vw;
+  }
+
+  .nav-links {
+      display: flex;
+      padding-right: 1vw;
+  }
+
+  .hello {
+      margin: auto !important;
+      padding-right: 0.5rem;
+      color: #eeff00;
+  }

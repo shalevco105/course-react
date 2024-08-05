@@ -5,17 +5,17 @@ import { movieService } from "../../../Services/MovieService";
 import { notify } from "../../../Utils/notify";
 import { useNavigate } from "react-router-dom";
 import { useTitle } from "../../../Utils/UseTitle";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
 
 export function AddMovie(): JSX.Element {
 
     useTitle("Shalev's App Add Movie");
 
-    const { register, handleSubmit, formState, setValue } = useForm<MovieModel>();
+    const { register, handleSubmit, formState } = useForm<MovieModel>();
     const navigate = useNavigate();
 
     async function send(movie: MovieModel) {
         try {
-            // movie.image = (movie.image as unknown as FileList)[0];
             await movieService.addMovie(movie);
             notify.success("Movie has been added.");
             navigate("/movies");
@@ -25,27 +25,58 @@ export function AddMovie(): JSX.Element {
         }
     }
 
+
     return (
-        <div className="AddMovie">
+        <Container maxWidth="sm" className="AddMovie">
+            <Typography gutterBottom sx={{ fontSize: '2rem' }}>
+                Add New Movie
+            </Typography>
             <form onSubmit={handleSubmit(send)}>
-                <label>Name: </label>
-                <input type="text" {...register("name", MovieModel.nameValidation)} />
-                <span className="error">{formState.errors?.name?.message}</span>
-
-                <label>Length: </label>
-                <input type="number" {...register("length")} />
-                <span className="error">{formState.errors?.length?.message}</span>
-
-                <label>Price: </label>
-                <input type="number" {...register("price")} />
-                <span className="error">{formState.errors?.price?.message}</span>
-
-                <label>Image: </label>
-                <input type="file" {...register("picUrl", MovieModel.imageValidation)} />
-                <span className="error">{formState.errors?.picUrl?.message}</span>
-
-                <button>Add</button>
+                <Box mb={2}>
+                    <TextField
+                        fullWidth
+                        label="Name"
+                        variant="outlined"
+                        {...register("name", MovieModel.nameValidation)}
+                        error={!!formState.errors.name}
+                        helperText={formState.errors?.name?.message}
+                    />
+                </Box>
+                <Box mb={2}>
+                    <TextField
+                        fullWidth
+                        label="Length"
+                        variant="outlined"
+                        {...register("length", MovieModel.lengthValidation)}
+                        error={!!formState.errors.length}
+                        helperText={formState.errors?.length?.message}
+                    />
+                </Box>
+                <Box mb={2}>
+                    <TextField
+                        fullWidth
+                        label="Price"
+                        type="number"
+                        variant="outlined"
+                        {...register("price")}
+                        error={!!formState.errors.price}
+                        helperText={formState.errors?.price?.message}
+                    />
+                </Box>
+                <Box mb={2}>
+                    <TextField
+                        fullWidth
+                        label="Image URL"
+                        variant="outlined"
+                        {...register("imageUrl")}
+                        error={!!formState.errors.imageUrl}
+                        helperText={formState.errors?.imageUrl?.message}
+                    />
+                </Box>
+                <Button type="submit" variant="contained" color="primary">
+                    CREATE
+                </Button>
             </form>
-        </div>
+        </Container>
     );
 }

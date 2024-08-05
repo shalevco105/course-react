@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { AppState, store } from "../../../Redux/store";
+import { AppState } from "../../../Redux/store";
 import "./TotalMovies.css";
 import { useSelector } from "react-redux";
 

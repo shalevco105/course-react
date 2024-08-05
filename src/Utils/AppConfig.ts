@@ -1,6 +1,6 @@
 class AppConfig {
 
-	public readonly moviesUrl = "http://localhost:3030/movie/data/";
+	public readonly moviesUrl = "http://localhost:3030/movie/";
 	public readonly registerUrl = "http://localhost:3030/auth/register/";
 	public readonly loginUrl = "http://localhost:3030/auth/login/";
 

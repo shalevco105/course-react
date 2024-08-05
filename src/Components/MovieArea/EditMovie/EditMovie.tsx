@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
 import { MovieModel } from "../../../Models/MovieModel";
-import "./EditMovie.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { movieService } from "../../../Services/MovieService";
 import { notify } from "../../../Utils/notify";
 import { useEffect } from "react";
+import { TextField, Button, Typography, Box, Container } from "@mui/material";
+import "./EditMovie.css";
 
 export function EditMovie(): JSX.Element {
-
     const { register, handleSubmit, formState, setValue } = useForm<MovieModel>();
     const navigate = useNavigate();
     const params = useParams();
@@ -19,15 +19,14 @@ export function EditMovie(): JSX.Element {
                 setValue("name", movie.name);
                 setValue("length", movie.length);
                 setValue("price", movie.price);
-                setValue("movie_picUrl", movie.picUrl);
+                setValue("imageUrl", movie.imageUrl);
             })
             .catch(err => notify.error(err));
-    }, []);
+    }, [externalId, setValue]);
 
     async function send(movie: MovieModel) {
         try {
             movie.externalId = externalId;
-            movie.movie_picUrl = (movie.movie_picUrl as unknown as FileList)[0].toString();
             await movieService.updateMovie(movie);
             notify.success("Movie has been updated.");
             navigate("/movies");
@@ -38,26 +37,56 @@ export function EditMovie(): JSX.Element {
     }
 
     return (
-        <div className="EditMovie">
+        <Container maxWidth="sm" className="EditMovie">
+            <Typography gutterBottom sx={{ fontSize: '2rem' }}>
+                Edit Movie: {externalId}
+            </Typography>
             <form onSubmit={handleSubmit(send)}>
-                <label>Name: </label>
-                <input type="text" {...register("name", MovieModel.nameValidation)} />
-                <span className="error">{formState.errors?.name?.message}</span>
-
-                <label>Length: </label>
-                <input type="number" {...register("length")} />
-                <span className="error">{formState.errors?.length?.message}</span>
-
-                <label>Price: </label>
-                <input type="number" {...register("price")} />
-                <span className="error">{formState.errors?.price?.message}</span>
-
-                <label>Image: </label>
-                <input type="file" {...register("movie_picUrl")} />
-                <span className="error">{formState.errors?.picUrl?.message}</span>
-
-                <button>Update</button>
+                <Box mb={2}>
+                    <TextField
+                        fullWidth
+                        label="Name"
+                        variant="outlined"
+                        {...register("name", MovieModel.nameValidation)}
+                        error={!!formState.errors.name}
+                        helperText={formState.errors?.name?.message}
+                    />
+                </Box>
+                <Box mb={2}>
+                    <TextField
+                        fullWidth
+                        label="Length"
+                        variant="outlined"
+                        {...register("length", MovieModel.lengthValidation)}
+                        error={!!formState.errors.length}
+                        helperText={formState.errors?.length?.message}
+                    />
+                </Box>
+                <Box mb={2}>
+                    <TextField
+                        fullWidth
+                        label="Price"
+                        type="number"
+                        variant="outlined"
+                        {...register("price")}
+                        error={!!formState.errors.price}
+                        helperText={formState.errors?.price?.message}
+                    />
+                </Box>
+                <Box mb={2}>
+                    <TextField
+                        fullWidth
+                        label="Image URL"
+                        variant="outlined"
+                        {...register("imageUrl")}
+                        error={!!formState.errors.imageUrl}
+                        helperText={formState.errors?.imageUrl?.message}
+                    />
+                </Box>
+                <Button type="submit" variant="contained" color="primary">
+                    Update
+                </Button>
             </form>
-        </div>
+        </Container>
     );
 }

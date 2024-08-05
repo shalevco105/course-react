@@ -1,22 +1,30 @@
 import { NavLink } from "react-router-dom";
-import "./Menu.css";
+import { List, ListItem, ListItemText } from "@mui/material";
 import { TotalMovies } from "../../MovieArea/TotalMovies/TotalMovies";
+import "./Menu.css";
 
 export function Menu(): JSX.Element {
     return (
         <div className="Menu">
-
-            <NavLink to="/home">Home</NavLink>
-
-            <NavLink to="/movies" end>Movies</NavLink>
-            <NavLink to="/movies/new">Add Movie</NavLink>
-
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/contact-us">Contact Us</NavLink>
-
+            <List>
+                <ListItem component={NavLink} to="/home">
+                    <ListItemText primary="Home" />
+                </ListItem>
+                <ListItem component={NavLink} to="/movies" end>
+                    <ListItemText primary="Movies" />
+                </ListItem>
+                <ListItem component={NavLink} to="/movies/new">
+                    <ListItemText primary="Add Movie" />
+                </ListItem>
+                <ListItem component={NavLink} to="/about">
+                    <ListItemText primary="About" />
+                </ListItem>
+                <ListItem component={NavLink} to="/contact-us">
+                    <ListItemText primary="Contact Us" />
+                </ListItem>
+            </List>
 
             <TotalMovies />
-
         </div>
     );
 }

@@ -4,11 +4,8 @@ import "./ContactUs.css";
 export function ContactUs(): JSX.Element {
     return (
         <div className="ContactUs">
-
             <form>
-
                 <Typography variant="h4">Contact Us</Typography>
-
                 <TextField type="text" label="Full Name" />
                 <TextField type="email" label="Email" />
                 <TextField type="tel" label="Phone" />
@@ -20,9 +17,7 @@ export function ContactUs(): JSX.Element {
                     <Button type="button" color="primary">Send</Button>
                     <Button type="reset" color="secondary">Clear</Button>
                 </ButtonGroup>
-
             </form>
-
         </div>
     );
 }
